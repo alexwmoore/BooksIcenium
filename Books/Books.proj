@@ -82,6 +82,7 @@
       <Platform>Android</Platform>
       <TargetName>cordova.js</TargetName>
     </Content>
+    <Content Include="js\account.js" />
     <Content Include="js\addNewBook.js" />
     <Content Include="js\bookDetails.js" />
     <Content Include="js\bookList.js" />

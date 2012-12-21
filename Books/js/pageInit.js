@@ -21,6 +21,12 @@ $(document).bind('pageinit', '#home', function () {
 		var credentials = { "emailAddress":"", "token":""};
 		localStorage.setItem("Credentials", JSON.stringify(credentials));
 	}        
+    else
+    {
+        credentials = $.parseJSON(localStorage.getItem("Credentials"));
+        foundEmailAddress = credentials.emailAddress
+        foundToken = credentials.token;
+    }
     
 	$('#logout').click(function (e) {
 		e.preventDefault()
@@ -108,7 +114,7 @@ $(document).bind('pageinit', '#home', function () {
 			var edition = $('#edition').val();
 			var description = $('#description').val();
 			var isSchoolText = $('#isSchoolText').val();
-			var userName = "";
+			var userName = foundEmailAddress;
 			var formData = new newBookData(title, isbn, publicationDate, edition, description, isSchoolText, userName);
    
 			$.ajax({
@@ -129,12 +135,15 @@ $(document).bind('pageinit', '#home', function () {
 		})
 	}
     
+    //Account
+    accountPageLoad(foundToken);
+    
 	//myBookInitials.js
 	var j = 0;
 	var y = 0;
 	if ($('#bookList').length) {
 		$.mobile.showPageLoadingMsg();
-		$.getJSON("http://apps.mfwd.net/PersonalLibrary/api/Initials/?userName=alexwmoore@me.com",
+		$.getJSON("http://apps.mfwd.net/PersonalLibrary/api/Initials/?userName=" + foundEmailAddress,
 				  function(data) {
 					  $('#bookList li').remove();					  
 					  $.each($.parseJSON(data.Data)['Initials'], function(i, item) {
@@ -165,7 +174,7 @@ $(document).bind('pageinit', '#home', function () {
 			var newFirstName = $('#firstName').val();
 			var newMiddleName = $('#middleName').val();
 			var newLastName = $('#lastName').val();
-			var formData = new authorData(newFirstName, newMiddleName, newLastName, "");                                    
+			var formData = new authorData(newFirstName, newMiddleName, newLastName, foundEmailAddress);                                    
    
 			$.ajax({
 				type: "POST",
@@ -192,7 +201,7 @@ $(document).bind('pageinit', '#home', function () {
 		$('#createGenre').submit(function(e) {
 			e.preventDefault();
 			var newGenre = $('#genreName').val();									
-			var formData = new genreData(newGenre);                                    
+			var formData = new genreData(newGenre, foundEmailAddress);                                    
    
 			$.ajax({
 				type: "POST",
@@ -218,7 +227,7 @@ $(document).bind('pageinit', '#home', function () {
 		$('#createPublishers').submit(function(e) {
 			e.preventDefault();
 			var newPublisher = $('#publisherName').val();									
-			var formData = new publisherData(newPublisher);                                    
+			var formData = new publisherData(newPublisher, foundEmailAddress);                                    
    
 			$.ajax({
 				type: "POST",
@@ -304,8 +313,8 @@ $(document).bind('pageinit', '#home', function () {
             var oldMobilePin = $('#oldMobilePin').val();
 			var newMobilePin = $('#newMobilePin').val();
             var newMobilePinConfirm = $('#newMobilePinConfirm').val();
-			var sendEmailAddress = "";                                                       
-            var token = "";
+			var sendEmailAddress = foundEmailAddress;                                                       
+            var token = foundToken;
                                                           
             if (newMobilePin == newMobilePinConfirm)
             {
@@ -331,7 +340,7 @@ $(document).bind('pageinit', '#home', function () {
     //Book Details
 	if ($('#BookName').length) {		
 		$.mobile.showPageLoadingMsg();
-		$.getJSON("http://apps.mfwd.net/PersonalLibrary/api/Book?id=" + bookName + "&userName=alexwmoore@me.com", 
+		$.getJSON("http://apps.mfwd.net/PersonalLibrary/api/Book?id=" + bookName + "&userName=" + foundEmailAddress, 
 				  function (data) {
 					  var singleBook = $.parseJSON(data.Data)['singleBook'];                                                
 					  $('#BookName').text(singleBook.Title);
@@ -374,7 +383,7 @@ $(document).bind('pageinit', '#home', function () {
     //Book List
     if ($('#initialValue').length) {
 		$('#initialDisplay').text(bookInitial);	
-		$.getJSON("http://apps.mfwd.net/PersonalLibrary/api/Initials/?id=" + bookInitial + "&userName=alexwmoore@me.com",
+		$.getJSON("http://apps.mfwd.net/PersonalLibrary/api/Initials/?id=" + bookInitial + "&userName=" + foundEmailAddress,
 				  function(data) {
 					  $('#initialValue li').remove();					  
 					  $.each($.parseJSON(data.Data)['ApiBooksModel'], function(i, item) {						  

@@ -6,10 +6,10 @@ $(document).delegate('[id^=publisher]', 'click', function () {
 		cache: false,                    
 		dataType: "json",
 		contentType: "application/x-www-form-urlencoded",		
-        data: "",
+		data: "",
 		success: function(result) {
 			alert("Yay");
-            PageLoad();
+			PageLoad();
 		},                
 		error:function (request, status, error) {
 			alert(request.responseText);
@@ -17,9 +17,9 @@ $(document).delegate('[id^=publisher]', 'click', function () {
 	});          
 });
 
-function PageLoad(){
-    if ($('#currentPublishers').length) {
-		$.mobile.loading('show', { theme: "a", text: "Loading..."});
+function PageLoad() {
+	if ($('#currentPublishers').length) {
+		
 		$.getJSON("http://apps.mfwd.net/PersonalLibrary/api/MobilePublishers/alexwmoore@me.com/",
 				  function(data) {
 					  $('#currentPublishers li').remove();					  
@@ -27,8 +27,6 @@ function PageLoad(){
 						  $('#currentPublishers').append('<li class="listViewItem"><a href="#" class="listText">' + item.PublisherName + '</a><a class="listDelete" id="publisher' + item.PublisherId + '" href="#" data-icon="delete" data-role="button" data-mini="true" data-inline="true">&nbsp;</a></li>');                             
 					  })
 					  $('#currentPublishers').trigger("create");
-				  })
-		$.mobile.loading('hide');        		
-	}
-    
+				  })		
+	}    
 }

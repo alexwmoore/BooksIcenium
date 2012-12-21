@@ -27,3 +27,4 @@ var webServiceUrl = "http://localhost:2015/api";
 var foundEmailAddress;
 var bookInitial = "";
 var bookName = "";
+var foundToken;
