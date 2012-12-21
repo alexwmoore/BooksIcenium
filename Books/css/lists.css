@@ -1,0 +1,21 @@
+.listViewItem
+{
+    width: 100%;    
+}
+
+.listText, .listHead li
+{
+    width: 75%;
+    text-align: left;    
+}
+
+.listDelete
+{
+    width: 30px;
+    text-align: right;    
+}
+
+.listHead
+{
+    width: 100%;    
+}

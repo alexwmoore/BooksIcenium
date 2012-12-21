@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<title>My Book Details</title>
+		<link href="jquery-mobile/jquery.mobile-1.1.1.min.css" rel="stylesheet" type="text/css" />
+        <link href="css/mobiscroll-2.3.1.custom.min.css" rel="stylesheet" type="text/css" />
+        <link href="css/main.css" rel="stylesheet" type="text/css" />
+        <link href="css/lists.css" rel="stylesheet" type="text/css" />
+
+        <script src="cordova.js" type="text/javascript"></script>
+        <script src="jquery-mobile/jquery-1.7.1.min.js" type="text/javascript"></script>
+        <script src="jquery-mobile/jquery.mobile-1.1.1.min.js" type="text/javascript"></script>
+        <script src="js/generic.js" type="text/javascript"></script>
+        <script src="js/mobiscroll-2.3.1.custom.min.js" type="text/javascript"></script>
+        <script src="js/pageInit.js" type="text/javascript"></script>
+        
+        <script src="js/addNewBook.js" type="text/javascript"></script>
+        <script src="js/bookDetails.js" type="text/javascript"></script>
+        <script src="js/bookList.js" type="text/javascript"></script>
+        <script src="js/dataModels.js" type="text/javascript"></script>
+        <script src="js/index.js" type="text/javascript"></script>
+        <script src="js/login.js" type="text/javascript"></script>
+        <script src="js/manageAuthors.js" type="text/javascript"></script> 
+        <script src="js/manageGenres.js" type="text/javascript"></script> 
+        <script src="js/managePublishers.js" type="text/javascript"></script>
+        <script src="js/myBookInitials.js" type="text/javascript"></script>
+        <script src="js/register.js" type="text/javascript"></script>
+        <script src="js/registrationConfirmation.js" type="text/javascript"></script>
+        <script src="js/updatePIN.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<div data-role="page" id="myBooks">
+			<div data-role="header">
+				<a href="#" data-role="button" value="Back" data-icon="back" data-theme="b" data-rel="back">Back</a>
+				<h1>Book Details</h1>
+			</div>
+			<div data-role="content">	
+                <table>
+                    <tr>                        
+                        <td><label style="float: left;"><strong>Books' Title: </strong></label></td>
+                        <td><div id="BookName"></div></td>
+                    </tr>
+                    <tr><td colspan="2">&nbsp;</td></tr>
+                    <tr>                        
+                        <td><label style="float: left;"><strong>Books' Author: </strong></label></td>
+                        <td><div id="bookAuthor"></div></td>
+                    </tr>
+                    <tr><td colspan="2">&nbsp;</td></tr>
+                    <tr>                        
+                        <td><label style="float: left;"><strong>Books' Publisher(s): </strong></label></td>
+                        <td><div id="bookPublisher"></div></td>
+                    </tr>
+                    <tr><td colspan="2">&nbsp;</td></tr>
+                    <tr>                        
+                        <td><label style="float: left;"><strong>Books' Genre(s): </strong></label></td>
+                        <td><div id="bookGenre"></div></td>
+                    </tr>
+                    <tr><td colspan="2">&nbsp;</td></tr>
+                    <tr>                        
+                        <td><label style="float: left;"><strong>ISBN: </strong></label></td>
+                        <td><div id="bookISBN"></div></td>
+                    </tr>
+                    <tr><td colspan="2">&nbsp;</td></tr>
+                    <tr>                        
+                        <td><label style="float: left;"><strong>Publication Date: </strong></label></td>
+                        <td><div id="bookPublicationDate"></div></td>
+                    </tr>
+                    <tr><td colspan="2">&nbsp;</td></tr>
+                    <tr>                        
+                        <td><label style="float: left;"><strong>Edition: </strong></label></td>
+                        <td><div id="bookEdition">&nbsp;</div></td>
+                    </tr>
+                    <tr><td colspan="2">&nbsp;</td></tr>
+                    <tr>                        
+                        <td colspan="2"><label style="float: left;"><strong>Description: </strong></label></td>                        
+                    </tr>
+                    <tr>
+                        <td colspan="2"><div id="bookDescription"></div></td>
+                    </tr>
+                    <tr><td colspan="2">&nbsp;</td></tr>
+                    <tr>
+                        <td colspan="2"><label style="float: left;"><strong>Is This A School Book?: </strong></label></td>
+                    </tr>
+                    <tr>                        
+                        <td colspan="2"><input type="checkbox" id="isSchoolTextBook"></input></td>                        
+                    </tr>
+                </table>
+			</div>
+		</div>
+	</body>
+</html>
