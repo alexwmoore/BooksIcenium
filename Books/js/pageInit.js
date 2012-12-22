@@ -260,10 +260,7 @@ $(document).bind('pageinit', '#home', function () {
 			var sendNickName = $('#nickName').val();                        
             
             var formData = new registrationData(sendFirstName, sendLastName, sendNickName, sendUserName, passwordValue);
-            var test = JSON.stringify(formData);
-            alert(test);
-            
-            
+                                    
 			if (confirmPasswordValue != passwordValue) {
 				var errorMessage = 'Password and Confirm Password Must Match';
 				$('#errorMessage').text(errorMessage);
@@ -274,10 +271,10 @@ $(document).bind('pageinit', '#home', function () {
                 $.ajax({
                     type: "POST",
                     url: "http://apps.mfwd.net/PersonalLibrary/api/Register",
-                    cache: false,                    
-                    dataType: "json",
-                    contentType: "json",
-                    data: JSON.stringify(formData),                    
+                    cache: false, 
+                    contentType: "application/x-www-form-urlencoded",
+                    dataType: "json",                    
+                    data: "=" + JSON.stringify(formData),                    
                     error: onError()
                 });             				
 			}            
