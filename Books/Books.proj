@@ -71,8 +71,8 @@
     <Content Include="jquery-mobile\images\icons-36-black.png" />
     <Content Include="jquery-mobile\images\icons-36-white.png" />
     <Content Include="jquery-mobile\jquery-1.7.1.min.js" />
-    <Content Include="jquery-mobile\jquery.mobile-1.1.1.min.css" />
-    <Content Include="jquery-mobile\jquery.mobile-1.1.1.min.js" />
+    <Content Include="jquery-mobile\jquery.mobile-1.2.0.css" />
+    <Content Include="jquery-mobile\jquery.mobile-1.2.0.js" />
     <Content Include="css\main.css" />
     <Content Include="cordova.ios.js">
       <Platform>iOS</Platform>
