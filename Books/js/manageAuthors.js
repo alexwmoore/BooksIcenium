@@ -1,7 +1,7 @@
 function AuthorPageLoad(){
     if ($('#currentAuthors').length) {
 		//$.mobile.loading( 'show', { theme: "a", text: "Loading..."});
-		$.getJSON("http://apps.mfwd.net/PersonalLibrary/api/MobileAuthors/alexwmoore@me.com/",
+		$.getJSON(webServiceUrl + "MobileAuthors/" + foundEmailAddress + "/",
 				  function(data) {
 					  $('#currentAuthors li').remove();					  
 					  $.each($.parseJSON(data.Data)['Authors'], function(i, item) {
@@ -18,7 +18,7 @@ $(document).delegate('[id^=author]', 'click', function () {
 	var currentId = $(this).attr('id').replace("author", "");
 	$.ajax({
 		type: "DELETE",
-		url: "http://apps.mfwd.net/PersonalLibrary/api/MobileAuthors/alexwmoore@me.com/" + currentId + "/",
+		url: webServiceUrl + "MobileAuthors/" + foundEmailAddress + "/" + currentId + "/",
 		cache: false,                    
 		dataType: "json",
 		contentType: "application/x-www-form-urlencoded",		

@@ -1,6 +1,6 @@
 function accountPageLoad(token)
 {
-    if (token.length > 0)
+    if (token != 'undefined' || token.length > 0)
     {
         ShowFastReset();
     }

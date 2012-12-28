@@ -23,7 +23,7 @@ jQuery.extend({
     }
 });
 
-var webServiceUrl = "http://localhost:2015/api";
+var webServiceUrl = "http://apps.mfwd.net/PersonalLibrary/api/";
 var foundEmailAddress;
 var bookInitial = "";
 var bookName = "";

@@ -2,7 +2,7 @@ function GenrePageLoad() {
 	if ($('#currentGenres').length) {		
 		//$.mobile.loading('show', { theme: "b", text: "Loading..."});
 
-		$.getJSON("http://apps.mfwd.net/PersonalLibrary/api/MobileGenres/alexwmoore@me.com/",
+		$.getJSON(webServiceUrl + "MobileGenres/" + foundEmailAddress + "/",
 				  function(data) {
 					  $('#currentGenres li').remove();					  
 					  $.each($.parseJSON(data.Data)['Genres'], function(i, item) {
@@ -18,7 +18,7 @@ $(document).delegate('[id^=genre]', 'click', function () {
 	var currentId = $(this).attr('id').replace("genre", "");
 	$.ajax({
 		type: "DELETE",
-		url: "http://apps.mfwd.net/PersonalLibrary/api/MobileGenres/alexwmoore@me.com/" + currentId + "/",
+		url: webServiceUrl + "MobileGenres/" + foundEmailAddress + "/" + currentId + "/",
 		cache: false,                    
 		dataType: "json",
 		contentType: "application/x-www-form-urlencoded",		

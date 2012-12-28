@@ -2,7 +2,7 @@ $(document).delegate('[id^=publisher]', 'click', function () {
 	var currentId = $(this).attr('id').replace("publisher", "");
 	$.ajax({
 		type: "DELETE",
-		url: "http://apps.mfwd.net/PersonalLibrary/api/MobilePublishers/alexwmoore@me.com/" + currentId + "/",
+		url: webServiceUrl + "MobilePublishers/" + foundEmailAddress + "/" + currentId + "/",
 		cache: false,                    
 		dataType: "json",
 		contentType: "application/x-www-form-urlencoded",		
@@ -20,7 +20,7 @@ $(document).delegate('[id^=publisher]', 'click', function () {
 function PageLoad() {
 	if ($('#currentPublishers').length) {
 		
-		$.getJSON("http://apps.mfwd.net/PersonalLibrary/api/MobilePublishers/alexwmoore@me.com/",
+		$.getJSON(webServiceUrl + "MobilePublishers/" + foundEmailAddress + "/",
 				  function(data) {
 					  $('#currentPublishers li').remove();					  
 					  $.each($.parseJSON(data.Data)['Publishers'], function(i, item) {

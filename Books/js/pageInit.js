@@ -38,7 +38,7 @@ $(document).bind('pageinit', '#home', function () {
 	
 	if ("Credentials" in localStorage) {				
 		credentials = $.parseJSON(localStorage.getItem("Credentials"));
-		if (credentials.token == "") {
+		if (!credentials.token || credentials.token == "") {
 			HideFastAccess();
 		}
 		else {
@@ -57,7 +57,7 @@ $(document).bind('pageinit', '#home', function () {
    
 			$.ajax({
 				type: "POST",
-				url: "http://apps.mfwd.net/PersonalLibrary/api/Login",
+				url: webServiceUrl + "Login",
 				cache: false,                    
 				dataType: "json",
 				contentType: "application/x-www-form-urlencoded",
@@ -84,7 +84,7 @@ $(document).bind('pageinit', '#home', function () {
 			var formData = new loginData(emailAddress, '', password, token);                                    			
 			$.ajax({
 				type: "POST",
-				url: "http://apps.mfwd.net/PersonalLibrary/api/Login",
+				url: webServiceUrl + "Login",
 				cache: false,    
 				crossDomain: true,                
 				dataType: "json",
@@ -119,7 +119,7 @@ $(document).bind('pageinit', '#home', function () {
    
 			$.ajax({
 				type: "POST",
-				url: "http://apps.mfwd.net/PersonalLibrary/api/Book",
+				url: webServiceUrl + "Book",
 				cache: false,                    
 				dataType: "json",
 				contentType: "application/x-www-form-urlencoded",
@@ -143,7 +143,7 @@ $(document).bind('pageinit', '#home', function () {
 	var y = 0;
 	if ($('#bookList').length) {
 		$.mobile.showPageLoadingMsg();
-		$.getJSON("http://apps.mfwd.net/PersonalLibrary/api/Initials/?userName=" + foundEmailAddress,
+		$.getJSON(webServiceUrl + "Initials/?userName=" + foundEmailAddress,
 				  function(data) {
 					  $('#bookList li').remove();					  
 					  $.each($.parseJSON(data.Data)['Initials'], function(i, item) {
@@ -178,7 +178,7 @@ $(document).bind('pageinit', '#home', function () {
    
 			$.ajax({
 				type: "POST",
-				url: "http://apps.mfwd.net/PersonalLibrary/api/MobileAuthors",
+				url: webServiceUrl + "MobileAuthors",
 				cache: false,                    
 				dataType: "json",
 				contentType: "application/x-www-form-urlencoded",
@@ -205,7 +205,7 @@ $(document).bind('pageinit', '#home', function () {
    
 			$.ajax({
 				type: "POST",
-				url: "http://apps.mfwd.net/PersonalLibrary/api/MobileGenres",
+				url: webServiceUrl + "MobileGenres",
 				cache: false,                    
 				dataType: "json",
 				contentType: "application/x-www-form-urlencoded",
@@ -231,7 +231,7 @@ $(document).bind('pageinit', '#home', function () {
    
 			$.ajax({
 				type: "POST",
-				url: "http://apps.mfwd.net/PersonalLibrary/api/MobilePublishers",
+				url: webServiceUrl + "MobilePublishers",
 				cache: false,                    
 				dataType: "json",
 				contentType: "application/x-www-form-urlencoded",
@@ -270,7 +270,7 @@ $(document).bind('pageinit', '#home', function () {
                 //This will eventually need to be https: but for now this will work.  
                 $.ajax({
                     type: "POST",
-                    url: "http://apps.mfwd.net/PersonalLibrary/api/Register",
+                    url: webServiceUrl + "Register",
                     cache: false, 
                     contentType: "application/x-www-form-urlencoded",
                     dataType: "json",                    
@@ -292,7 +292,7 @@ $(document).bind('pageinit', '#home', function () {
    
 			$.ajax({
 				type: "POST",
-				url: "http://apps.mfwd.net/PersonalLibrary/api/Register",
+				url: webServiceUrl + "Register",
 				cache: false,                    
 				dataType: "json",
 				contentType: "json",
@@ -319,7 +319,7 @@ $(document).bind('pageinit', '#home', function () {
    
 			    $.ajax({
 			    	type: "POST",
-			    	url: "http://apps.mfwd.net/PersonalLibrary/api/MobilePin",
+			    	url: webServiceUrl + "MobilePin",
     				cache: false,                    
 				    dataType: "json",
     				contentType: "json",
@@ -337,7 +337,7 @@ $(document).bind('pageinit', '#home', function () {
     //Book Details
 	if ($('#BookName').length) {		
 		$.mobile.showPageLoadingMsg();
-		$.getJSON("http://apps.mfwd.net/PersonalLibrary/api/Book?id=" + bookName + "&userName=" + foundEmailAddress, 
+		$.getJSON(webServiceUrl + "Book?id=" + bookName + "&userName=" + foundEmailAddress, 
 				  function (data) {
 					  var singleBook = $.parseJSON(data.Data)['singleBook'];                                                
 					  $('#BookName').text(singleBook.Title);
@@ -380,7 +380,7 @@ $(document).bind('pageinit', '#home', function () {
     //Book List
     if ($('#initialValue').length) {
 		$('#initialDisplay').text(bookInitial);	
-		$.getJSON("http://apps.mfwd.net/PersonalLibrary/api/Initials/?id=" + bookInitial + "&userName=" + foundEmailAddress,
+		$.getJSON(webServiceUrl + "Initials/?id=" + bookInitial + "&userName=" + foundEmailAddress,
 				  function(data) {
 					  $('#initialValue li').remove();					  
 					  $.each($.parseJSON(data.Data)['ApiBooksModel'], function(i, item) {						  
