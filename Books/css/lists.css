@@ -6,7 +6,8 @@
 .listText, .listHead li
 {
     width: 75%;
-    text-align: left;    
+    text-align: left;
+color: red;    
 }
 
 .listDelete

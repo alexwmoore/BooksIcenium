@@ -64,6 +64,9 @@
     <Content Include="css\wp_icons.png" />
     <Content Include="css\wp_icons_light.png" />
     <Content Include="index.html" />
+    <Content Include="jquery-mobile\BooksTheme.css" />
+    <Content Include="jquery-mobile\BooksTheme.min.css" />
+    <Content Include="jquery-mobile\BooksThemeGenerics.css" />
     <Content Include="jquery-mobile\images\ajax-loader.png" />
     <Content Include="jquery-mobile\images\ajax-loader.gif" />
     <Content Include="jquery-mobile\images\icons-18-black.png" />
