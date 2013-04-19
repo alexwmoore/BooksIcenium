@@ -136,7 +136,58 @@ $(document).bind('pageinit', '#home', function () {
 	}
     
     //Account
-    accountPageLoad(foundToken);
+    accountPageLoad(foundToken);  
+	if ($('#accountData').length) {
+		
+		$.getJSON(webServiceUrl + "MobileAccount/" + foundEmailAddress,
+				  function(data) {
+                      var accountInformation = $.parseJSON(data.Data);                                                
+                      $('#emailAddress').text(accountInformation.emailAddress);
+                      $('#firstName').text(accountInformation.firstName);
+                      $('#lastName').text(accountInformation.lastName);
+					  $('#bookList').trigger("create");              
+				  })
+	}
+    
+    //AccountUpdate      
+	if ($('#accountUpdate').length) {    
+        
+		$.getJSON(webServiceUrl + "MobileAccount/" + foundEmailAddress,
+				  function(data) {
+                      var accountInformation = $.parseJSON(data.Data);                                                
+                      $('#emailInput').text = accountInformation.emailAddress;
+                      $('#firstNameInput').text = accountInformation.firstName;
+                      $('#lastNameInput').text = accountInformation.lastName;
+                      $('#nickNameInput').text = accountInformation.nickName;
+					  $('#accountUpdate').trigger("create");    
+				  })
+        
+        $('#accountUpdate').submit(function(e) {
+			e.preventDefault();
+            var firstName = $('#firstNameInput').val();
+			var lastName = $('#lastNameInput').val();
+            var displayName = $('#displayNameInput').val();
+            var emailAddress = $('#emailAddressInput').val();
+            
+			var formData = new accountUpdateData(firstName, lastName, displayName, emailAddress);
+   
+			$.ajax({
+				type: "POST",
+				url: webServiceUrl + "MobileAccount",
+				cache: false,                    
+				dataType: "json",
+				contentType: "application/x-www-form-urlencoded",
+				data: "=" + JSON.stringify(formData),
+				success: function(result) {
+					alert("Account Information Was Updated"); 
+					//accountPageLoad();
+				},                
+				error:function (request, status, error) {
+					alert(request.responseText);
+				}
+			});       
+		})
+	} 
     
 	//myBookInitials.js
 	var j = 0;

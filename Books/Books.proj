@@ -56,6 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account.html" />
+    <Content Include="AccountUpdate.html" />
     <Content Include="AddBook.html" />
     <Content Include="BookDetails.html" />
     <Content Include="BookList.html" />
@@ -86,6 +87,7 @@
       <TargetName>cordova.js</TargetName>
     </Content>
     <Content Include="js\account.js" />
+    <Content Include="js\AccountUpdate.js" />
     <Content Include="js\addNewBook.js" />
     <Content Include="js\bookDetails.js" />
     <Content Include="js\bookList.js" />

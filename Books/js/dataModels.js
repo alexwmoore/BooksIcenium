@@ -32,6 +32,13 @@ function publisherData(publisherName, userName) {
     this.userName = userName;	
 }
 
+function accountUpdateData(firstName, lastName, displayName, emailAddress)
+{
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.displayName = displayName;
+    this.emailAddress = emailAddress;
+}
 function registrationData(firstName, lastName, nickName, emailAddress, passwordValue)
 {
     this.firstName = firstName;
